@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_gray"
+    tools:context="org.sana.simpleapp.view.RegisterActivity"
+    tools:showIn="@layout/activity_register">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@color/light_gray"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/light_gray"
+            android:padding="16dp"
+            android:text="@string/register_activity_title" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/field_bg"
+                android:orientation="horizontal">
+
+
+                <org.sana.simpleapp.widget.EditTextWithPolicy
+                    android:id="@+id/field_firstname"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:background="@android:color/transparent"
+                    android:drawableLeft="@drawable/googleg_standard_color_18"
+                    android:duplicateParentState="true"
+                    android:gravity="start"
+                    android:inputType="text"
+                    android:layoutDirection="rtl"
+                    android:maxLines="1"
+                    android:padding="2dp"
+                    android:textDirection="rtl" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.3"
+                    android:padding="16dp"
+                    android:text="@string/field_name" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/field_bg"
+                android:orientation="horizontal">
+
+
+                <org.sana.simpleapp.widget.EditTextWithPolicy
+                    android:id="@+id/field_lastname"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:background="@android:color/transparent"
+                    android:drawableLeft="@drawable/googleg_standard_color_18"
+                    android:gravity="start"
+                    android:inputType="text"
+                    android:layoutDirection="rtl"
+                    android:maxLines="1"
+                    android:padding="2dp"
+                    android:textDirection="rtl" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.3"
+                    android:padding="16dp"
+                    android:text="@string/field_last_name" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/field_bg"
+                android:orientation="horizontal">
+
+
+                <org.sana.simpleapp.widget.EditTextWithPolicy
+                    android:id="@+id/field_phone_number"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:background="@android:color/transparent"
+                    android:drawableLeft="@drawable/googleg_standard_color_18"
+                    android:gravity="start"
+                    android:inputType="phone"
+                    android:layoutDirection="rtl"
+                    android:maxLines="1"
+                    android:padding="2dp"
+                    android:textDirection="rtl" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.3"
+                    android:padding="16dp"
+                    android:text="@string/field_phone_number" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/field_bg"
+                android:orientation="horizontal">
+
+
+                <org.sana.simpleapp.widget.EditTextWithPolicy
+                    android:id="@+id/field_telphone_number"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:background="@android:color/transparent"
+                    android:drawableLeft="@drawable/googleg_standard_color_18"
+                    android:gravity="start"
+                    android:inputType="numberDecimal"
+                    android:layoutDirection="rtl"
+                    android:maxLines="1"
+                    android:padding="2dp"
+                    android:textDirection="rtl" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.3"
+                    android:padding="16dp"
+                    android:text="@string/field_tel_number" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="@string/fine_address" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/field_bg"
+                android:orientation="horizontal">
+
+
+                <org.sana.simpleapp.widget.EditTextWithPolicy
+                    android:id="@+id/field_address"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.9"
+                    android:background="@android:color/transparent"
+                    android:drawableLeft="@drawable/googleg_standard_color_18"
+                    android:gravity="start"
+                    android:inputType="text"
+                    android:layoutDirection="rtl"
+                    android:padding="2dp"
+                    android:textDirection="rtl"
+                    app:policy="phone"
+                    android:drawableStart="@drawable/googleg_standard_color_18" />
+
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatToggleButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/register"
+        android:text="مرحله بعد"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+</android.support.constraint.ConstraintLayout>

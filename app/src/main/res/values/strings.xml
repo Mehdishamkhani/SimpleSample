@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Sana Simple App</string>
+    <string name="no_location_data_provided">یافت نشد</string>
+    <string name="service_not_available">خطایی رخ داده است</string>
+    <string name="invalid_lat_long_used">مختصات اشتباه است</string>
+    <string name="no_address_found">آدرس یافت نشد</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="fine_address">آدرس دقیق</string>
+    <string name="register_activity_title">لطفا اطلاعات ورود خود را وارد نمایید</string>
+    <string name="field_name">نام</string>
+    <string name="field_last_name">نام خانوادگی</string>
+    <string name="field_phone_number">تلفن همراه</string>
+    <string name="field_tel_number">تلفن ثابت</string>
+</resources>
