@@ -39,7 +39,7 @@ abstract class EndlessRecyclerOnScrollListener protected constructor(private val
     abstract fun onLoadMore(current_page: Int)
 
     companion object {
-        var TAG = EndlessRecyclerOnScrollListener::class.java.simpleName
+        const val TAG = "@EndlessRecyclerOnScrollListener"
     }
 
 }

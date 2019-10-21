@@ -2,19 +2,13 @@ package org.sana.simpleapp.view
 
 import android.os.Bundle
 import android.util.Log
-
-import com.novoda.merlin.Bindable
-import com.novoda.merlin.Connectable
-import com.novoda.merlin.Disconnectable
-import com.novoda.merlin.Logger
-import com.novoda.merlin.Merlin
-
 import androidx.appcompat.app.AppCompatActivity
+import com.novoda.merlin.*
 
 abstract class MerlinActivity : AppCompatActivity() {
 
     private var logHandle: DemoLogHandle? = null
-    protected var merlin: Merlin
+    private lateinit var merlin: Merlin
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
