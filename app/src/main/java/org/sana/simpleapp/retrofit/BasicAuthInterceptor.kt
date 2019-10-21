@@ -12,11 +12,7 @@ import java.io.IOException
 
 class BasicAuthInterceptor(user: String, password: String) : Interceptor {
 
-    private val credentials: String
-
-    init {
-        this.credentials = Credentials.basic(user, password)
-    }
+    private val credentials: String = Credentials.basic(user, password)
 
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {

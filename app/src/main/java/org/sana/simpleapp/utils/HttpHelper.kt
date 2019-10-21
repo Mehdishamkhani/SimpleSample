@@ -26,26 +26,17 @@ object HttpHelper {
 
     fun showError(context: Context?, t: Throwable?): Int {
 
-        if (t == null || context == null) return DEFAULT_CODE
 
         if (t is HttpException) {
-            if (context is Activity) {
+            if (context is Activity)
                 context.runOnUiThread { Toast.makeText(context, makeMessage(context, t.code()), Toast.LENGTH_LONG).show() }
-            }
-
+            
             return t.code()
         }
 
         return DEFAULT_CODE
     }
 
-    fun showError(activity: Activity?, message: String?) {
-
-        if (message == null || activity == null) return
-
-        activity.runOnUiThread { Toast.makeText(activity, message, Toast.LENGTH_LONG).show() }
-
-    }
 
     private fun makeMessage(context: Context?, code: Int): String {
 

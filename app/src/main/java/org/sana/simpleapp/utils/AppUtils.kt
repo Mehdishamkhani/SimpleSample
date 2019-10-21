@@ -15,16 +15,15 @@ class AppUtils {
 
     object LocationConstants {
 
-        val SUCCESS_RESULT = 0
-        val FAILURE_RESULT = 1
-        private val PACKAGE_NAME = "org.sana.simpleapp"
-        val RECEIVER = "$PACKAGE_NAME.RECEIVER"
-        val RESULT_DATA_KEY = "$PACKAGE_NAME.RESULT_DATA_KEY"
-        val LOCATION_DATA_EXTRA = "$PACKAGE_NAME.LOCATION_DATA_EXTRA"
-        val LOCATION_DATA_AREA = "$PACKAGE_NAME.LOCATION_DATA_AREA"
-        val LOCATION_DATA_CITY = "$PACKAGE_NAME.LOCATION_DATA_CITY"
-        val LOCATION_DATA_STREET = "$PACKAGE_NAME.LOCATION_DATA_STREET"
-
+        const val SUCCESS_RESULT = 0
+        const val FAILURE_RESULT = 1
+        private const val PACKAGE_NAME = "org.sana.simpleapp"
+        const val RECEIVER = "$PACKAGE_NAME.RECEIVER"
+        const val RESULT_DATA_KEY = "$PACKAGE_NAME.RESULT_DATA_KEY"
+        const val LOCATION_DATA_EXTRA = "$PACKAGE_NAME.LOCATION_DATA_EXTRA"
+        const val LOCATION_DATA_AREA = "$PACKAGE_NAME.LOCATION_DATA_AREA"
+        const val LOCATION_DATA_CITY = "$PACKAGE_NAME.LOCATION_DATA_CITY"
+        const val LOCATION_DATA_STREET = "$PACKAGE_NAME.LOCATION_DATA_STREET"
 
 
     }
@@ -35,26 +34,22 @@ class AppUtils {
         const val LNG_TAG = "lng"
         const val ADDRESS_TAG = "address"
 
-        fun hasLollipop(): Boolean {
-            return Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP
-        }
-
         fun isLocationEnabled(context: Context): Boolean {
             var locationMode = 0
             val locationProviders: String
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                 try {
                     locationMode = Settings.Secure.getInt(context.contentResolver, Settings.Secure.LOCATION_MODE)
-
                 } catch (e: Settings.SettingNotFoundException) {
                     e.printStackTrace()
                 }
 
-                return locationMode != Settings.Secure.LOCATION_MODE_OFF
+                locationMode != Settings.Secure.LOCATION_MODE_OFF
+
             } else {
                 locationProviders = Settings.Secure.getString(context.contentResolver, Settings.Secure.LOCATION_PROVIDERS_ALLOWED)
-                return !TextUtils.isEmpty(locationProviders)
+                !TextUtils.isEmpty(locationProviders)
             }
         }
     }

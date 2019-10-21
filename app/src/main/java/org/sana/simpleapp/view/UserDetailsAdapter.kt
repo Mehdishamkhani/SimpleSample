@@ -15,9 +15,7 @@ import org.sanasimpleapp.R
 class UserDetailsAdapter(private val feedDataModel: MutableList<FeedDataModel>?) : RecyclerView.Adapter<UserDetailsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.user_details_row, parent, false))
-
     }
 
     fun addData(data: List<FeedDataModel>) {

@@ -4,7 +4,9 @@ package org.sana.simpleapp.widget
  * Created by mehdi on 19/10/2019.
  */
 
-
+/**
+ *  simple input policy validator
+ */
 class PolicyValidator {
     var isValid = false
         private set

@@ -60,10 +60,6 @@ open class BaseActivity : MerlinActivity(), Connectable, Disconnectable, Bindabl
 
     }
 
-    override fun onPause() {
-        super.onPause()
-    }
-
     override fun onBind(networkStatus: NetworkStatus) {
         if (!networkStatus.isAvailable) {
             onDisconnect()

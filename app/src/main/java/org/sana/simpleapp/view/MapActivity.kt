@@ -1,6 +1,7 @@
 package org.sana.simpleapp.view
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -36,21 +37,16 @@ import org.sanasimpleapp.R
  * Created by mehdi on 19/10/2019.
  */
 
-class MapActivity : BaseActivity(), OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener {
+open class MapActivity : BaseActivity(), OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener {
 
 
     private var mMap: GoogleMap? = null
     private var mGoogleApiClient: GoogleApiClient? = null
     private var mCenterLatLong: LatLng? = null
-
-    internal var mLastLocation: Location? = null
-
-
+    private var mLastLocation: Location? = null
     private var mResultReceiver: AddressResultReceiver? = null
-    protected var mAddressOutput: String? = ""
-
-
-    internal var mLocationCallback = LocationCallback()
+    private var mAddressOutput: String? = ""
+    private var mLocationCallback = LocationCallback()
     private var fusedLocationProviderClient: FusedLocationProviderClient? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,6 +69,7 @@ class MapActivity : BaseActivity(), OnMapReadyCallback, GoogleApiClient.Connecti
             startActivity(toRegisterActivity)
         }
 
+
         if (!hasPermission())
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_CODE);
 
@@ -82,14 +79,15 @@ class MapActivity : BaseActivity(), OnMapReadyCallback, GoogleApiClient.Connecti
     //SUPER SIMPLE APPROACH!
     private fun hasPermission(): Boolean {
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
             return false;
-        }
 
         return true;
     }
 
 
+    @SuppressLint("MissingPermission")
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
@@ -121,10 +119,11 @@ class MapActivity : BaseActivity(), OnMapReadyCallback, GoogleApiClient.Connecti
                 dialog.show()
             }
             buildGoogleApiClient()
-        } else {
-            Toast.makeText(this@MapActivity, "Location not supported in this device", Toast.LENGTH_SHORT).show()
-            finish()
+            return
         }
+
+        Toast.makeText(this@MapActivity, "Location not supported in this device", Toast.LENGTH_SHORT).show()
+        finish()
     }
 
 
@@ -134,9 +133,10 @@ class MapActivity : BaseActivity(), OnMapReadyCallback, GoogleApiClient.Connecti
 
         mMap = googleMap
         mMap!!.setOnCameraMoveStartedListener(GoogleMap.OnCameraMoveStartedListener {
-            if (mMap == null) {
+
+            if (mMap == null)
                 return@OnCameraMoveStartedListener
-            }
+
 
             mMap!!.clear()
             mCenterLatLong = mMap!!.cameraPosition.target
@@ -151,7 +151,6 @@ class MapActivity : BaseActivity(), OnMapReadyCallback, GoogleApiClient.Connecti
                 val mLocation = Location("")
                 mLocation.latitude = mCenterLatLong!!.latitude
                 mLocation.longitude = mCenterLatLong!!.longitude
-
                 startIntentService(mLocation)
 
             } catch (e: Exception) {
@@ -164,6 +163,7 @@ class MapActivity : BaseActivity(), OnMapReadyCallback, GoogleApiClient.Connecti
 
     }
 
+    @SuppressLint("MissingPermission")
     override fun onConnected(bundle: Bundle?) {
 
         if (!hasPermission())
@@ -199,9 +199,8 @@ class MapActivity : BaseActivity(), OnMapReadyCallback, GoogleApiClient.Connecti
 
     override fun onLocationChanged(location: Location?) {
 
-        if (location != null) {
+        if (location != null)
             changeMap(location)
-        }
 
         fusedLocationProviderClient!!.removeLocationUpdates(mLocationCallback)
 
@@ -251,10 +250,10 @@ class MapActivity : BaseActivity(), OnMapReadyCallback, GoogleApiClient.Connecti
         return true;
     }
 
+    @SuppressLint("MissingPermission")
     private fun changeMap(location: Location?) {
 
         Log.d(TAG, "Reaching map" + mMap!!)
-
 
         if (!hasPermission())
             return;
@@ -265,7 +264,6 @@ class MapActivity : BaseActivity(), OnMapReadyCallback, GoogleApiClient.Connecti
             val latLong = LatLng(location!!.latitude, location.longitude)
             val cameraPosition = CameraPosition.Builder()
                     .target(latLong).zoom(19f).build()
-
             mMap!!.isMyLocationEnabled = true
             mMap!!.uiSettings.isMyLocationButtonEnabled = true
             mMap!!.animateCamera(CameraUpdateFactory
@@ -273,10 +271,11 @@ class MapActivity : BaseActivity(), OnMapReadyCallback, GoogleApiClient.Connecti
 
             startIntentService(location)
 
-        } else {
-            Toast.makeText(applicationContext, getString(R.string.map_loading_failed), Toast.LENGTH_SHORT).show()
-            finish()
+            return
         }
+
+        Toast.makeText(applicationContext, getString(R.string.map_loading_failed), Toast.LENGTH_SHORT).show()
+        finish()
 
     }
 
@@ -290,14 +289,14 @@ class MapActivity : BaseActivity(), OnMapReadyCallback, GoogleApiClient.Connecti
 
     protected fun startIntentService(mLocation: Location) {
 
-        if (!Geocoder.isPresent()) {
+        if (!Geocoder.isPresent())
             return
-        }
 
         val intent = Intent(this, FetchAddressIntentService::class.java)
         intent.putExtra(AppUtils.LocationConstants.RECEIVER, mResultReceiver)
         intent.putExtra(AppUtils.LocationConstants.LOCATION_DATA_EXTRA, mLocation)
         startService(intent)
+
     }
 
     companion object {

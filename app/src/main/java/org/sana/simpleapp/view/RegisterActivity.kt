@@ -132,7 +132,6 @@ class RegisterActivity : BaseActivity(), ValidationListener {
         }
 
 
-
         override fun onComplete() {
             startActivity(Intent(this@RegisterActivity, MainActivity::class.java))
             finish()
