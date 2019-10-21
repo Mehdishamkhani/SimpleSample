@@ -21,14 +21,17 @@ import javax.inject.Singleton
 class RestApiModule {
 
 
+    /**
+     *  Stupidly hardcoded user/pass
+     */
     @Provides
     @Singleton
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder().baseUrl(Connection.BASE_URL)
                 .client(OkHttpClient.Builder()
                         .addInterceptor(BasicAuthInterceptor("09822222222", "sana1234"))
-                        .connectTimeout(60,TimeUnit.SECONDS)
-                        .readTimeout(30,TimeUnit.SECONDS)
+                        .connectTimeout(60, TimeUnit.SECONDS)
+                        .readTimeout(30, TimeUnit.SECONDS)
                         .build())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())

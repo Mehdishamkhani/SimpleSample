@@ -1,13 +1,9 @@
 package org.sana.simpleapp.view
 
-import android.Manifest
 import android.app.AlertDialog
 import android.content.Context
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.PersistableBundle
-import android.widget.Toast
-import androidx.core.app.ActivityCompat
 import com.novoda.merlin.*
 import dagger.android.AndroidInjection
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
@@ -37,7 +33,6 @@ open class BaseActivity : MerlinActivity(), Connectable, Disconnectable, Bindabl
         AndroidInjection.inject(this)
 
     }
-
 
 
     override fun attachBaseContext(newBase: Context) {
