@@ -2,8 +2,6 @@ package org.sana.simpleapp.view
 
 import android.Manifest
 import android.app.AlertDialog
-import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Geocoder
@@ -16,7 +14,8 @@ import android.provider.Settings
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GooglePlayServicesUtil
 import com.google.android.gms.common.api.GoogleApiClient
@@ -30,14 +29,9 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.tasks.OnSuccessListener
-
-import org.sana.simpleapp.utils.AppUtils
 import org.sana.simpleapp.FetchAddressIntentService
+import org.sana.simpleapp.utils.AppUtils
 import org.sanasimpleapp.R
-
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener {
 
@@ -141,7 +135,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleApiClient.Co
 
     override fun onConnected(bundle: Bundle?) {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
             return
         }
 
