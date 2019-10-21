@@ -26,10 +26,14 @@ class AppUtils {
         val LOCATION_DATA_STREET = "$PACKAGE_NAME.LOCATION_DATA_STREET"
 
 
+
     }
 
     companion object {
 
+        const val LAT_TAG = "lat"
+        const val LNG_TAG = "lng"
+        const val ADDRESS_TAG = "address"
 
         fun hasLollipop(): Boolean {
             return Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP

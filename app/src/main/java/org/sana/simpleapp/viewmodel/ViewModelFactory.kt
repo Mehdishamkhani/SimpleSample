@@ -14,6 +14,10 @@ import javax.inject.Singleton
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
+/**
+ * Created by mehdi on 19/10/2019.
+ */
+
 @Singleton
 class ViewModelFactory @Inject
 constructor(private val creators: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>) : ViewModelProvider.Factory {

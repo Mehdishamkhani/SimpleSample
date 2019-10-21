@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 object Connection {
 
-    val BASE_URL = "http://dev.achareh.ir/api/"
+    val BASE_URL = "http://stage.achareh.ir/api/"
 
     fun connect(): Retrofit {
 

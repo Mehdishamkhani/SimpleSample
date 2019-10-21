@@ -12,7 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="@dimen/general_space"
         android:background="@color/light_gray"
         android:orientation="vertical">
 
@@ -20,22 +20,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/light_gray"
-            android:padding="16dp"
+            android:padding="@dimen/general_space"
             android:text="@string/register_activity_title" />
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="@dimen/general_space"
             android:background="@android:color/white"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="@dimen/general_space">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="@dimen/general_space"
                 android:background="@drawable/field_bg"
                 android:orientation="horizontal">
 
@@ -46,20 +46,20 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.6"
                     android:background="@android:color/transparent"
-                    android:drawableLeft="@drawable/googleg_standard_color_18"
+                    android:drawableLeft="@drawable/unchecked_circle_gray"
                     android:duplicateParentState="true"
                     android:gravity="start"
                     android:inputType="text"
                     android:layoutDirection="rtl"
                     android:maxLines="1"
-                    android:padding="2dp"
+                    android:padding="5dp"
                     android:textDirection="rtl" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.3"
-                    android:padding="16dp"
+                    android:padding="@dimen/general_space"
                     android:text="@string/field_name" />
 
 
@@ -69,7 +69,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="@dimen/general_space"
                 android:background="@drawable/field_bg"
                 android:orientation="horizontal">
 
@@ -80,19 +80,19 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.6"
                     android:background="@android:color/transparent"
-                    android:drawableLeft="@drawable/googleg_standard_color_18"
+                    android:drawableLeft="@drawable/unchecked_circle_gray"
                     android:gravity="start"
                     android:inputType="text"
                     android:layoutDirection="rtl"
                     android:maxLines="1"
-                    android:padding="2dp"
+                    android:padding="5dp"
                     android:textDirection="rtl" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.3"
-                    android:padding="16dp"
+                    android:padding="@dimen/general_space"
                     android:text="@string/field_last_name" />
 
 
@@ -102,7 +102,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="@dimen/general_space"
                 android:background="@drawable/field_bg"
                 android:orientation="horizontal">
 
@@ -113,19 +113,20 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.6"
                     android:background="@android:color/transparent"
-                    android:drawableLeft="@drawable/googleg_standard_color_18"
+                    android:drawableLeft="@drawable/unchecked_circle_gray"
                     android:gravity="start"
-                    android:inputType="phone"
+                    android:inputType="numberDecimal"
                     android:layoutDirection="rtl"
                     android:maxLines="1"
-                    android:padding="2dp"
-                    android:textDirection="rtl" />
+                    android:padding="5dp"
+                    android:textDirection="rtl"
+                    app:policy="phone" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.3"
-                    android:padding="16dp"
+                    android:padding="@dimen/general_space"
                     android:text="@string/field_phone_number" />
 
 
@@ -135,30 +136,31 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="@dimen/general_space"
                 android:background="@drawable/field_bg"
                 android:orientation="horizontal">
 
 
                 <org.sana.simpleapp.widget.EditTextWithPolicy
-                    android:id="@+id/field_telphone_number"
+                    android:id="@+id/field_telephone_number"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.6"
                     android:background="@android:color/transparent"
-                    android:drawableLeft="@drawable/googleg_standard_color_18"
+                    android:drawableLeft="@drawable/unchecked_circle_gray"
                     android:gravity="start"
                     android:inputType="numberDecimal"
                     android:layoutDirection="rtl"
                     android:maxLines="1"
-                    android:padding="2dp"
-                    android:textDirection="rtl" />
+                    android:padding="5dp"
+                    android:textDirection="rtl"
+                    app:policy="telephone" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.3"
-                    android:padding="16dp"
+                    android:padding="@dimen/general_space"
                     android:text="@string/field_tel_number" />
 
 
@@ -170,23 +172,24 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="@dimen/general_space"
             android:background="@android:color/white"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="@dimen/general_space">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="@dimen/general_space"
                 android:text="@string/fine_address" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="@dimen/general_space"
                 android:background="@drawable/field_bg"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="6dp">
 
 
                 <org.sana.simpleapp.widget.EditTextWithPolicy
@@ -195,21 +198,56 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.9"
                     android:background="@android:color/transparent"
-                    android:drawableLeft="@drawable/googleg_standard_color_18"
+                    android:drawableStart="@drawable/unchecked_circle_gray"
+                    android:drawableLeft="@drawable/unchecked_circle_gray"
                     android:gravity="start"
                     android:inputType="text"
-                    android:layoutDirection="rtl"
-                    android:padding="2dp"
+                    android:layoutDirection="ltr"
+                    android:padding="5dp"
                     android:textDirection="rtl"
-                    app:policy="phone"
-                    android:drawableStart="@drawable/googleg_standard_color_18" />
+                    app:policy="address" />
 
 
             </LinearLayout>
 
-            <androidx.appcompat.widget.AppCompatToggleButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+            <RadioGroup
+                android:checkedButton="@+id/female"
+                android:id="@+id/toggle_gender"
+                android:layout_width="200dp"
+                android:layout_height="30dp"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:background="@drawable/switch_bg"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:id="@+id/male"
+                    android:background="@drawable/toggle_widget_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="مرد"
+                    android:textColor="@drawable/toggle_color" />
+
+                <RadioButton
+                    android:layout_marginRight="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:id="@+id/female"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/toggle_widget_btn"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="زن"
+                    android:textColor="@drawable/toggle_color" />
+            </RadioGroup>
 
         </LinearLayout>
 
@@ -218,9 +256,15 @@
 
     <Button
         android:id="@+id/register"
-        android:text="مرحله بعد"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/btn_bg_green"
+        android:text="مرحله بعد"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>

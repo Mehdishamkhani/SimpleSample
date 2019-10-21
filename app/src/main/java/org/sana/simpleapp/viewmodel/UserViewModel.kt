@@ -13,10 +13,13 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import org.sana.simpleapp.model.RegisterUserModel
 
-class UserViewModel @Inject constructor(@AppContext context: Context, private val service: RestApi) : ViewModel() {
+/**
+ * Created by mehdi on 19/10/2019.
+ */
+
+class UserViewModel @Inject constructor(private val service: RestApi) : ViewModel() {
 
     fun registerUserData(data: RegisterUserModel): Completable {
-
         return service.registerUserData(data).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
 

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="40dp"
+    android:height="100dp"
+    android:viewportWidth="40"
+    android:viewportHeight="100">
+
+    <path
+        android:name="canvas_background"
+        android:pathData="M-1,-1 L41,-1 L41,101 L-1,101 L-1,-1 Z" />
+    <path
+        android:name="svg_1"
+        android:fillColor="#000000"
+        android:strokeWidth="1"
+        android:pathData="M35.3412,20.1799 C35.3412,11.7716,28.2856,4.9524,19.5858,4.9524
+S3.8304,11.7716,3.8304,20.1799 C3.8304,27.8446,9.71012,34.1244,17.335,35.1865
+L17.335,74.5639 L21.8365,74.5639 L21.8365,35.1865
+C29.4593,34.1244,35.3411,27.8447,35.3411,20.1799 Z" />
+    <path
+        android:name="svg_2"
+        android:fillColor="#000000"
+        android:strokeColor="#ffffff"
+        android:pathData="M19.4686,10.5645 C25.2251,10.5645,29.8918,14.8819,29.8918,20.2078
+C29.8918,25.5337,25.2251,29.8511,19.4686,29.8511
+C13.712,29.8511,9.04535,25.5337,9.04535,20.2078
+C9.04535,14.8819,13.712,10.5645,19.4686,10.5645 Z" />
+    <path
+        android:name="svg_3"
+        android:pathData="M19.5709,73.5751 C20.8223,73.5751,21.8367,74.0261,21.8367,74.5823
+C21.8367,75.1386,20.8223,75.5895,19.5709,75.5895
+C18.3195,75.5895,17.3051,75.1386,17.3051,74.5823
+C17.3051,74.0261,18.3195,73.5751,19.5709,73.5751 Z" />
+</vector>

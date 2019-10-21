@@ -11,4 +11,12 @@
     <string name="field_last_name">نام خانوادگی</string>
     <string name="field_phone_number">تلفن همراه</string>
     <string name="field_tel_number">تلفن ثابت</string>
+    <string name="male">مرد</string>
+    <string name="location_not_enabled">لوکیشن فعال نیست!</string>
+    <string name="location_setting">تنطیمات لوکیشن</string>
+    <string name="cancel">لغو</string>
+    <string name="map_loading_failed">خطا در بارگذاری نقشه</string>
+    <string name="general_err">خطایی رخ داده است مجدد تلاش کنید</string>
+    <string name="ok">باشه!</string>
+    <string name="internet_disconnected">اینترنت قط شده است</string>
 </resources>

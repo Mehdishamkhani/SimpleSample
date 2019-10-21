@@ -5,4 +5,6 @@
     <color name="colorAccent">#FF4081</color>
     <color name="light_gray">#E5E5E5</color>
     <color name="dark_gray">#999</color>
+    <color name="green_btn">#16d998</color>
+    <color name="dark_blue">#2483b3</color>
 </resources>

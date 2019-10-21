@@ -1,29 +1,24 @@
 package org.sana.simpleapp.widget
 
 import android.content.Context
-import android.content.res.TypedArray
+import android.graphics.drawable.Drawable
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
-import android.widget.EditText
+import androidx.appcompat.widget.AppCompatEditText
 import android.widget.LinearLayout
-
-import org.sana.simpleapp.utils.PolicyValidator
-import org.sana.simpleapp.utils.ValidationListener
-import org.sanasimpleapp.R
-
 import androidx.core.content.ContextCompat
-
-import org.sana.simpleapp.utils.PolicyValidator.GENERAL_POLICY
+import org.sana.simpleapp.widget.PolicyValidator.Companion.GENERAL_POLICY
+import org.sanasimpleapp.R
 
 /**
  * Created by mehdi on 19/10/2019.
  */
 
 
-class EditTextWithPolicy : EditText, TextWatcher, View.OnFocusChangeListener {
+class EditTextWithPolicy : AppCompatEditText, TextWatcher, View.OnFocusChangeListener {
     private var policyValidator: PolicyValidator? = null
     private var policy: String? = null
     var isValid = false
@@ -32,7 +27,6 @@ class EditTextWithPolicy : EditText, TextWatcher, View.OnFocusChangeListener {
     private var message = ""
 
     constructor(context: Context) : super(context) {}
-
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
 
@@ -90,15 +84,15 @@ class EditTextWithPolicy : EditText, TextWatcher, View.OnFocusChangeListener {
 
         if (parent is LinearLayout) {
             val parent = parent as LinearLayout
-            if (hasFocus)
-                parent.background = ContextCompat.getDrawable(context, R.drawable.field_bg_focused)
+            val drawable: Drawable? = if (hasFocus)
+                ContextCompat.getDrawable(context, R.drawable.field_bg_focused)
             else
-                parent.background = ContextCompat.getDrawable(context, R.drawable.field_bg_normal)
+                ContextCompat.getDrawable(context, R.drawable.field_bg_normal)
+            parent.background = drawable
         }
     }
 
     companion object {
-
-        private val TAG = "@EditTextWithPolicy"
+        private const val TAG = "@EditTextWithPolicy"
     }
 }

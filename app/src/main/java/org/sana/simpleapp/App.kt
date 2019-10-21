@@ -1,28 +1,20 @@
-/*
- * @author Mehdi Shamkhani  2019
- * https://github.com/mehdishamkhani
- *
- */
-
 package org.sana.simpleapp
 
 
 import android.app.Activity
 import android.support.multidex.MultiDexApplication
-
-import org.bouncycastle.jce.provider.BouncyCastleProvider
-import org.sanasimpleapp.R
-
-import java.security.Security
-
-import javax.inject.Inject
-
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
 import io.github.inflationx.calligraphy3.CalligraphyConfig
 import io.github.inflationx.calligraphy3.CalligraphyInterceptor
 import io.github.inflationx.viewpump.ViewPump
 import org.sana.simpleapp.di.component.DaggerAppComponent
+import org.sanasimpleapp.R
+import javax.inject.Inject
+
+/**
+ * Created by mehdi on 19/10/2019.
+ */
 
 
 class App : MultiDexApplication(), HasActivityInjector {
@@ -50,6 +42,10 @@ class App : MultiDexApplication(), HasActivityInjector {
                                 .setFontAttrId(R.attr.fontPath)
                                 .build())).build())
 
+
+        /*
+        * Dagger init
+        */
 
         DaggerAppComponent.builder()
                 .application(this)

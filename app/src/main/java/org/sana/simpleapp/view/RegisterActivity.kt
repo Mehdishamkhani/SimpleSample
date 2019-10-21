@@ -4,9 +4,9 @@ import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
+import android.widget.RadioButton
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import dagger.android.AndroidInjection
 import io.reactivex.disposables.CompositeDisposable
@@ -14,17 +14,21 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.observers.DisposableCompletableObserver
 import kotlinx.android.synthetic.main.activity_register.*
 import org.sana.simpleapp.model.RegisterUserModel
-import org.sana.simpleapp.utils.ValidatorComposite
-import org.sana.simpleapp.utils.ValidationListener
+import org.sana.simpleapp.utils.AppUtils
+import org.sana.simpleapp.utils.HttpHelper
 import org.sana.simpleapp.viewmodel.UserViewModel
 import org.sana.simpleapp.viewmodel.ViewModelFactory
 import org.sana.simpleapp.widget.EditTextWithPolicy
+import org.sana.simpleapp.widget.ValidationListener
+import org.sana.simpleapp.widget.ValidatorComposite
 import org.sanasimpleapp.R
 import javax.inject.Inject
 
+/**
+ * Created by mehdi on 19/10/2019.
+ */
 
-class RegisterActivity : DaggerActivity(), ValidationListener {
-
+class RegisterActivity : BaseActivity(), ValidationListener {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
@@ -34,17 +38,19 @@ class RegisterActivity : DaggerActivity(), ValidationListener {
     @Inject
     lateinit var compositeDisposable: CompositeDisposable
 
-    private lateinit var validatorComposite: ValidatorComposite<EditTextWithPolicy>
+    private var validatorComposite: ValidatorComposite<EditTextWithPolicy>? = null
 
 
+    var lat: Float? = 0.toFloat()
+    var lng: Float? = 0.toFloat()
+    var address: String? = ""
 
     override fun onValidationStatusChange(editTextWithPolicy: EditTextWithPolicy, isValid: Boolean) {
 
-
         val drawable: Drawable? = if (isValid)
-            ContextCompat.getDrawable(this, R.drawable.googleg_disabled_color_18)
+            ContextCompat.getDrawable(this, R.drawable.check_circle_green)
         else
-            ContextCompat.getDrawable(this, R.drawable.googleg_standard_color_18)
+            ContextCompat.getDrawable(this, R.drawable.unchecked_circle_gray)
 
         editTextWithPolicy.setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null)
 
@@ -56,33 +62,46 @@ class RegisterActivity : DaggerActivity(), ValidationListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        AndroidInjection.inject(this) // injection happens here
+        AndroidInjection.inject(this)
 
-userViewModel =        ViewModelProviders.of(this, viewModelFactory)[UserViewModel::class.java]
+        val extras = intent?.extras;
+        lat = extras?.getFloat(AppUtils.LAT_TAG)
+        lng = extras?.getFloat(AppUtils.LNG_TAG)
+        address = extras?.getString(AppUtils.ADDRESS_TAG)
+        field_address.setText(address)
+
+        userViewModel = ViewModelProviders.of(this, viewModelFactory)[UserViewModel::class.java]
+
         validatorComposite = ValidatorComposite.getInstance(this)
-        validatorComposite.add(field_address).add(field_firstname).add(field_lastname).add(field_phone_number).add(field_telphone_number)
+        validatorComposite?.add(field_firstname)?.add(field_lastname)?.add(field_phone_number)?.add(field_telephone_number)?.add(field_address)
 
 
-        register.setOnClickListener({
+
+
+        register.setOnClickListener {
 
             val message = checkFieldsValidation()
             if (message == null) {
 
                 val registerUserModel = RegisterUserModel()
-                registerUserModel.address= field_address.text.toString()
-                registerUserModel.first_name= field_firstname.text.toString()
-                registerUserModel.last_name= field_lastname.text.toString()
+                registerUserModel.address = field_address.text.toString()
+                registerUserModel.first_name = field_firstname.text.toString()
+                registerUserModel.last_name = field_lastname.text.toString()
                 registerUserModel.coordinate_mobile = field_phone_number.text.toString()
-                registerUserModel.coordinate_phone_number = field_telphone_number.text.toString()
+                registerUserModel.coordinate_phone_number = field_telephone_number.text.toString()
+                registerUserModel.lat = lat
+                registerUserModel.lng = lng
+                val gender = findViewById<RadioButton>(toggle_gender.checkedRadioButtonId).text
+                registerUserModel.gender = if (gender == getString(R.string.male)) "Male" else "Female"
 
-                val disposable: Disposable = userViewModel!!.registerUserData(registerUserModel).subscribeWith(DisposableCompletableObservers())
-                compositeDisposable!!.add(disposable)
+                val disposable: Disposable = userViewModel.registerUserData(registerUserModel).subscribeWith(DisposableCompletableObservers())
+                compositeDisposable.add(disposable)
 
+                return@setOnClickListener
             }
 
             Toast.makeText(this@RegisterActivity, message.toString(), Toast.LENGTH_LONG).show()
-
-        })
+        }
 
 
     }
@@ -90,16 +109,16 @@ userViewModel =        ViewModelProviders.of(this, viewModelFactory)[UserViewMod
 
     override fun onDestroy() {
         super.onDestroy()
-        validatorComposite.clear()
-        compositeDisposable?.dispose()
+        validatorComposite?.clear()
+        compositeDisposable.dispose()
     }
 
     private fun checkFieldsValidation(): String? {
 
-        for (input: EditTextWithPolicy in validatorComposite.list) {
+        for (input: EditTextWithPolicy in validatorComposite!!.list) {
             if (!input.isValid) {
-                Log.d("@@@", input.message.plus("invalid"))
-                return input.message
+                Log.d("@@@", input.getMessage().plus("invalid"))
+                return input.getMessage()
             }
         }
 
@@ -108,16 +127,15 @@ userViewModel =        ViewModelProviders.of(this, viewModelFactory)[UserViewMod
 
 
     inner class DisposableCompletableObservers : DisposableCompletableObserver() {
-        override fun onError(e: Throwable?) {
-
-
+        override fun onError(e: Throwable) {
+            Toast.makeText(this@RegisterActivity, HttpHelper.showError(this@RegisterActivity, e), Toast.LENGTH_LONG).show()
         }
 
-        override fun onComplete() {
 
+
+        override fun onComplete() {
             startActivity(Intent(this@RegisterActivity, MainActivity::class.java))
             finish()
-
         }
 
     }

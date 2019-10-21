@@ -1,6 +1,5 @@
-package org.sana.simpleapp.utils
+package org.sana.simpleapp.widget
 
-import org.sana.simpleapp.widget.EditTextWithPolicy
 import java.util.*
 
 /**
