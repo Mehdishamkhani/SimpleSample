@@ -91,7 +91,7 @@ class MainActivity : BaseActivity() {
     }
 
     private fun getScrollListener(): EndlessRecyclerOnScrollListener {
-        return object : EndlessRecyclerOnScrollListener(linearLayoutManager, this) {
+        return object : EndlessRecyclerOnScrollListener(linearLayoutManager, this@MainActivity) {
             override fun onLoadMore(page: Int) {
                 if (!requestOnWay) {
                     loading.visibility = View.VISIBLE

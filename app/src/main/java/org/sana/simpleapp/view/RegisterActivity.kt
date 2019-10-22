@@ -80,6 +80,7 @@ class RegisterActivity : BaseActivity(), ValidationListener {
 
         register.setOnClickListener {
 
+            register.isEnabled = false
             val message = checkFieldsValidation()
             if (message == null) {
 
@@ -129,6 +130,8 @@ class RegisterActivity : BaseActivity(), ValidationListener {
     inner class DisposableCompletableObservers : DisposableCompletableObserver() {
         override fun onError(e: Throwable) {
             Toast.makeText(this@RegisterActivity, HttpHelper.showError(this@RegisterActivity, e), Toast.LENGTH_LONG).show()
+            register.isEnabled = true
+
         }
 
 
