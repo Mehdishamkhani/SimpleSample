@@ -5,7 +5,11 @@ import android.content.Context
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-
+/**
+ *
+ * Observe Scroll Position For Loading More Items
+ *
+ */
 abstract class EndlessRecyclerOnScrollListener protected constructor(private val mLinearLayoutManager: LinearLayoutManager?, private val context: Context?) : RecyclerView.OnScrollListener() {
     private var current_page = 1
     private var previousTotal = 0

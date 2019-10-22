@@ -3,7 +3,6 @@ package org.sana.simpleapp.view
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.android.AndroidInjection
@@ -12,7 +11,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.processors.PublishProcessor
 import kotlinx.android.synthetic.main.activity_main.*
-import org.sana.simpleapp.model.FeedDataModel
+import org.sana.simpleapp.model.UserDetailsDataModel
 import org.sana.simpleapp.utils.EndlessRecyclerOnScrollListener
 import org.sana.simpleapp.utils.HttpHelper
 import org.sana.simpleapp.viewmodel.FeedViewModel
@@ -25,13 +24,19 @@ import javax.inject.Inject
  * Created by mehdi on 19/10/2019.
  */
 
+
+/**
+ *
+ * Load User's Details Items list in a Simple Approach!
+ *
+ */
 class MainActivity : BaseActivity() {
 
 
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var userDetailsFeedAdapter: UserDetailsAdapter
     private var disposable: Disposable? = null
-    var data: ArrayList<FeedDataModel> = ArrayList()
+    var data: ArrayList<UserDetailsDataModel> = ArrayList()
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
@@ -79,7 +84,7 @@ class MainActivity : BaseActivity() {
 
     }
 
-    private fun handleUserDetailsResult(result: Result<List<FeedDataModel>>) {
+    private fun handleUserDetailsResult(result: Result<List<UserDetailsDataModel>>) {
 
         Log.d("iserror", result.error().toString());
         if (!result.isError && result.response()!!.isSuccessful)

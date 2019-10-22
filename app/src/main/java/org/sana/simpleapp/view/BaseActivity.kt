@@ -13,6 +13,12 @@ import io.github.inflationx.viewpump.ViewPumpContextWrapper
  * Created by mehdi on 19/10/2019.
  */
 
+
+/**
+ *
+ *  Load Merlin Activity Stuff and Inject The Extended Activity
+ *
+ */
 open class BaseActivity : MerlinActivity(), Connectable, Disconnectable, Bindable {
 
     override fun createMerlin(): Merlin {

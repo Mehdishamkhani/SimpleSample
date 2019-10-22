@@ -5,20 +5,25 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import org.sana.simpleapp.model.FeedDataModel
+import org.sana.simpleapp.model.UserDetailsDataModel
 import org.sanasimpleapp.R
 
 /**
  * Created by mehdi on 19/10/2019.
  */
 
-class UserDetailsAdapter(private val feedDataModel: MutableList<FeedDataModel>?) : RecyclerView.Adapter<UserDetailsAdapter.ViewHolder>() {
+/**
+ *
+ * handle t..
+ *
+ */
+class UserDetailsAdapter(private val feedDataModel: MutableList<UserDetailsDataModel>?) : RecyclerView.Adapter<UserDetailsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.user_details_row, parent, false))
     }
 
-    fun addData(data: List<FeedDataModel>) {
+    fun addData(data: List<UserDetailsDataModel>) {
 
         feedDataModel!!.addAll(data)
         notifyDataSetChanged()

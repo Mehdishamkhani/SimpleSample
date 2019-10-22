@@ -1,13 +1,8 @@
 package org.sana.simpleapp.retrofit
 
-import org.sana.simpleapp.model.FeedDataModel
-
 import io.reactivex.Completable
 import io.reactivex.Flowable
-import okhttp3.ResponseBody
-import org.sana.simpleapp.model.RegisterUserModel
-import retrofit2.Call
-import retrofit2.Response
+import org.sana.simpleapp.model.UserDetailsDataModel
 import retrofit2.adapter.rxjava2.Result
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -21,10 +16,10 @@ interface RestApi {
 
 
     @get:GET("karfarmas/address")
-    val userFeed: Flowable<Result<List<FeedDataModel>>>
+    val userFeed: Flowable<Result<List<UserDetailsDataModel>>>
 
 
     @POST("karfarmas/address")
-    fun registerUserData(@Body data: RegisterUserModel): Completable
+    fun registerUserData(@Body data: UserDetailsDataModel): Completable
 
 }

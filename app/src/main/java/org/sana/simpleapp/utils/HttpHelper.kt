@@ -12,6 +12,11 @@ import retrofit2.HttpException
  * Created by mehdi on 19/10/2019.
  */
 
+/**
+ *
+ *  The Server HTTP Status Code handling
+ *
+ */
 object HttpHelper {
 
     const val HTTP_ERROR_AUTH = 401

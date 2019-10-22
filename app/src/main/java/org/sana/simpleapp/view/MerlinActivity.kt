@@ -5,6 +5,11 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.novoda.merlin.*
 
+/**
+ *
+ * Internet Connection Checker Activity
+ *
+ */
 abstract class MerlinActivity : AppCompatActivity() {
 
     private var logHandle: DemoLogHandle? = null

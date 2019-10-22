@@ -13,7 +13,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.observers.DisposableCompletableObserver
 import kotlinx.android.synthetic.main.activity_register.*
-import org.sana.simpleapp.model.RegisterUserModel
+import org.sana.simpleapp.model.UserDetailsDataModel
 import org.sana.simpleapp.utils.AppUtils
 import org.sana.simpleapp.utils.HttpHelper
 import org.sana.simpleapp.viewmodel.UserViewModel
@@ -28,6 +28,11 @@ import javax.inject.Inject
  * Created by mehdi on 19/10/2019.
  */
 
+/**
+ *
+ * Provides a Registration Fields & Gets User's Info And Send It To the Server
+ *
+ */
 class RegisterActivity : BaseActivity(), ValidationListener {
 
     @Inject
@@ -84,7 +89,7 @@ class RegisterActivity : BaseActivity(), ValidationListener {
             val message = checkFieldsValidation()
             if (message == null) {
 
-                val registerUserModel = RegisterUserModel()
+                val registerUserModel = UserDetailsDataModel()
                 registerUserModel.address = field_address.text.toString()
                 registerUserModel.first_name = field_firstname.text.toString()
                 registerUserModel.last_name = field_lastname.text.toString()

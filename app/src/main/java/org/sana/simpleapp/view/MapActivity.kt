@@ -37,6 +37,12 @@ import org.sanasimpleapp.R
  * Created by mehdi on 19/10/2019.
  */
 
+
+/**
+ *
+ * Load The Google Map and a Location Picker
+ *
+ */
 open class MapActivity : BaseActivity(), OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener {
 
 
@@ -151,7 +157,6 @@ open class MapActivity : BaseActivity(), OnMapReadyCallback, GoogleApiClient.Con
                 val mLocation = Location("")
                 mLocation.latitude = mCenterLatLong!!.latitude
                 mLocation.longitude = mCenterLatLong!!.longitude
-                startIntentService(mLocation)
 
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -269,7 +274,6 @@ open class MapActivity : BaseActivity(), OnMapReadyCallback, GoogleApiClient.Con
             mMap!!.animateCamera(CameraUpdateFactory
                     .newCameraPosition(cameraPosition))
 
-            startIntentService(location)
 
             return
         }
@@ -287,17 +291,7 @@ open class MapActivity : BaseActivity(), OnMapReadyCallback, GoogleApiClient.Con
     }
 
 
-    protected fun startIntentService(mLocation: Location) {
 
-        if (!Geocoder.isPresent())
-            return
-
-        val intent = Intent(this, FetchAddressIntentService::class.java)
-        intent.putExtra(AppUtils.LocationConstants.RECEIVER, mResultReceiver)
-        intent.putExtra(AppUtils.LocationConstants.LOCATION_DATA_EXTRA, mLocation)
-        startService(intent)
-
-    }
 
     companion object {
         private const val PLAY_SERVICES_RESOLUTION_REQUEST = 9000
